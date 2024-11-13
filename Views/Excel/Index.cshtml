@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Excel Import";
+}
+
+<h2>Import Excel File</h2>
+
+<form asp-action="Import" enctype="multipart/form-data" method="post">
+    <div class="form-group">
+        <label for="file">Upload Excel File</label>
+        <input type="file" name="file" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Upload & Process</button>
+</form>
+
+@if (ViewBag.TotalAfterTaxing != null)
+{
+    <hr />
+    <h3>Total Value After Taxing: @ViewBag.TotalAfterTaxing</h3>
+    <form asp-action="DownloadModifiedExcel" method="get">
+        <button type="submit" class="btn btn-success">Download Modified Excel</button>
+    </form>
+}
